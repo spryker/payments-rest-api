@@ -18,7 +18,7 @@ use Spryker\Glue\Kernel\Controller\AbstractController;
 class PaymentCustomersResourceController extends AbstractController
 {
     /**
-     * @Glue({
+     * {@Glue({
      *     "post": {
      *          "summary": [
      *              "Returns customer data that should be used on the store front address page."
@@ -35,7 +35,7 @@ class PaymentCustomersResourceController extends AbstractController
      *          },
      *          "isIdNullable": true
      *     }
-     * })
+     * })}
      *
      * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
      * @param \Generated\Shared\Transfer\RestPaymentCustomersRequestAttributesTransfer $restPaymentCustomersRequestAttributesTransfer

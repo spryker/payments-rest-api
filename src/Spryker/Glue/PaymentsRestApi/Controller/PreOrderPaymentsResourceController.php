@@ -18,7 +18,7 @@ use Spryker\Glue\Kernel\Controller\AbstractController;
 class PreOrderPaymentsResourceController extends AbstractController
 {
     /**
-     * @Glue({
+     * {@Glue({
      *     "post": {
      *          "summary": [
      *              "Creates a pre-order payment and returns payment provider data that should be used on the store front payment page."
@@ -35,7 +35,7 @@ class PreOrderPaymentsResourceController extends AbstractController
      *          },
      *          "isIdNullable": true
      *     }
-     * })
+     * })}
      *
      * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
      * @param \Generated\Shared\Transfer\RestPreOrderPaymentRequestAttributesTransfer $restPreOrderPaymentRequestAttributesTransfer

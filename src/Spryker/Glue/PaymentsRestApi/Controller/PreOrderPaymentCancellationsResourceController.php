@@ -18,7 +18,7 @@ use Spryker\Glue\Kernel\Controller\AbstractController;
 class PreOrderPaymentCancellationsResourceController extends AbstractController
 {
     /**
-     * @Glue({
+     * {@Glue({
      *     "post": {
      *          "summary": [
      *              "Cancels a pre-order payment."
@@ -35,7 +35,7 @@ class PreOrderPaymentCancellationsResourceController extends AbstractController
      *          },
      *          "isIdNullable": true
      *     }
-     * })
+     * })}
      *
      * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
      * @param \Generated\Shared\Transfer\RestPreOrderPaymentCancellationRequestAttributesTransfer $restPreOrderPaymentCancellationRequestAttributesTransfer

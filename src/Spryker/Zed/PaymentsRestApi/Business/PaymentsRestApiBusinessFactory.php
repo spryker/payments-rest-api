@@ -18,9 +18,6 @@ use Spryker\Zed\PaymentsRestApi\PaymentsRestApiDependencyProvider;
  */
 class PaymentsRestApiBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\PaymentsRestApi\Business\Quote\PaymentQuoteMapperInterface
-     */
     public function createPaymentQuoteMapper(): PaymentQuoteMapperInterface
     {
         return new PaymentQuoteMapper(
@@ -28,9 +25,6 @@ class PaymentsRestApiBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PaymentsRestApi\Dependency\Facade\PaymentsRestApiToPaymentFacadeInterface
-     */
     protected function getPaymentFacade(): PaymentsRestApiToPaymentFacadeInterface
     {
         return $this->getProvidedDependency(PaymentsRestApiDependencyProvider::FACADE_PAYMENT);

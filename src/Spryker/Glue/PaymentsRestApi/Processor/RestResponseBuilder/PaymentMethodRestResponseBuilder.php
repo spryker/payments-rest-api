@@ -28,10 +28,6 @@ class PaymentMethodRestResponseBuilder implements PaymentMethodRestResponseBuild
      */
     protected $paymentMethodMapper;
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceBuilderInterface $restResourceBuilder
-     * @param \Spryker\Glue\PaymentsRestApi\Processor\Mapper\PaymentMethodMapperInterface $paymentMethodMapper
-     */
     public function __construct(
         RestResourceBuilderInterface $restResourceBuilder,
         PaymentMethodMapperInterface $paymentMethodMapper
@@ -63,11 +59,6 @@ class PaymentMethodRestResponseBuilder implements PaymentMethodRestResponseBuild
         return $restResources;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PreOrderPaymentResponseTransfer $preOrderPaymentResponseTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createPaymentCancellationsRestResponse(
         PreOrderPaymentResponseTransfer $preOrderPaymentResponseTransfer
     ): RestResponseInterface {
@@ -85,11 +76,6 @@ class PaymentMethodRestResponseBuilder implements PaymentMethodRestResponseBuild
         return $restResponse->addResource($restResource);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PreOrderPaymentResponseTransfer $preOrderPaymentResponseTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createPaymentsRestResponse(
         PreOrderPaymentResponseTransfer $preOrderPaymentResponseTransfer
     ): RestResponseInterface {
@@ -107,12 +93,6 @@ class PaymentMethodRestResponseBuilder implements PaymentMethodRestResponseBuild
         return $restResponse->addResource($restResource);
     }
 
-    /**
-     * @param string $error
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface $restResponse
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     protected function addErrorToRestResponse(
         string $error,
         RestResponseInterface $restResponse

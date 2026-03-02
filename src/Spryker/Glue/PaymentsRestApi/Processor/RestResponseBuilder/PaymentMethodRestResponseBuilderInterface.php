@@ -20,19 +20,9 @@ interface PaymentMethodRestResponseBuilderInterface
      */
     public function createRestPaymentMethodsResources(RestCheckoutDataTransfer $restCheckoutDataTransfer): array;
 
-    /**
-     * @param \Generated\Shared\Transfer\PreOrderPaymentResponseTransfer $preOrderPaymentResponseTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createPaymentCancellationsRestResponse(
         PreOrderPaymentResponseTransfer $preOrderPaymentResponseTransfer
     ): RestResponseInterface;
 
-    /**
-     * @param \Generated\Shared\Transfer\PreOrderPaymentResponseTransfer $preOrderPaymentResponseTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createPaymentsRestResponse(PreOrderPaymentResponseTransfer $preOrderPaymentResponseTransfer): RestResponseInterface;
 }

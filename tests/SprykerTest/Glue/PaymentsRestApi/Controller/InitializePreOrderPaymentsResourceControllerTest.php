@@ -44,9 +44,6 @@ class InitializePreOrderPaymentsResourceControllerTest extends Unit
      */
     protected PaymentsRestApiControllerTester $tester;
 
-    /**
-     * @return void
-     */
     public function _before(): void
     {
         parent::_before();
@@ -54,9 +51,6 @@ class InitializePreOrderPaymentsResourceControllerTest extends Unit
         $this->tester->getContainer()->set(static::SERVICE_RESOURCE_BUILDER, new RestResourceBuilder());
     }
 
-    /**
-     * @return void
-     */
     public function testRequestInitializePreOrderPaymentReturnsCreatedHttpResponseWithPaymentProviderData(): void
     {
         // Arrange
@@ -110,9 +104,6 @@ class InitializePreOrderPaymentsResourceControllerTest extends Unit
         $this->assertSame($preOrderPaymentResponseTransfer->getPreOrderPaymentData(), $attributes->getPreOrderPaymentData());
     }
 
-    /**
-     * @return void
-     */
     public function testRequestInitializePreOrderPaymentReturnsUnprocessableHttpResponseWhenPaymentMethodWasNotFound(): void
     {
         // Arrange

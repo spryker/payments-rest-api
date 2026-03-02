@@ -42,12 +42,6 @@ class Payment implements PaymentInterface
      */
     protected PaymentCustomerRestResponseBuilderInterface $paymentCustomerRestResponseBuilder;
 
-    /**
-     * @param \Spryker\Glue\PaymentsRestApi\Dependency\Client\PaymentsRestApiToPaymentClientInterface $paymentClient
-     * @param \Spryker\Glue\PaymentsRestApi\Dependency\Client\PaymentsRestApiToPaymentAppClientInterface $paymentAppClient
-     * @param \Spryker\Glue\PaymentsRestApi\Processor\RestResponseBuilder\PaymentMethodRestResponseBuilderInterface $paymentMethodRestResponseBuilder
-     * @param \Spryker\Glue\PaymentsRestApi\Processor\RestResponseBuilder\PaymentCustomerRestResponseBuilderInterface $paymentCustomerRestResponseBuilder
-     */
     public function __construct(
         PaymentsRestApiToPaymentClientInterface $paymentClient,
         PaymentsRestApiToPaymentAppClientInterface $paymentAppClient,
@@ -60,12 +54,6 @@ class Payment implements PaymentInterface
         $this->paymentCustomerRestResponseBuilder = $paymentCustomerRestResponseBuilder;
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     * @param \Generated\Shared\Transfer\RestPreOrderPaymentRequestAttributesTransfer $restPreOrderPaymentRequestAttributesTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function initializePreOrderPayment(
         RestRequestInterface $restRequest,
         RestPreOrderPaymentRequestAttributesTransfer $restPreOrderPaymentRequestAttributesTransfer
@@ -86,12 +74,6 @@ class Payment implements PaymentInterface
         );
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     * @param \Generated\Shared\Transfer\RestPreOrderPaymentCancellationRequestAttributesTransfer $restPreOrderPaymentCancellationRequestAttributesTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function cancelPreOrderPayment(
         RestRequestInterface $restRequest,
         RestPreOrderPaymentCancellationRequestAttributesTransfer $restPreOrderPaymentCancellationRequestAttributesTransfer
@@ -113,12 +95,6 @@ class Payment implements PaymentInterface
         );
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     * @param \Generated\Shared\Transfer\RestPaymentCustomersRequestAttributesTransfer $restPaymentCustomersRequestAttributesTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function getCustomer(
         RestRequestInterface $restRequest,
         RestPaymentCustomersRequestAttributesTransfer $restPaymentCustomersRequestAttributesTransfer

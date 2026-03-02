@@ -35,9 +35,6 @@ class PaymentsRestApiFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testPaymentRestApiFacadeWillMapSinglePaymentToQuote(): void
     {
         /** @var \Spryker\Zed\PaymentsRestApi\Business\PaymentsRestApiFacadeInterface $paymentsRestApiFacade */
@@ -52,9 +49,6 @@ class PaymentsRestApiFacadeTest extends Unit
         $this->assertCount(0, $actualQuote->getPayments());
     }
 
-    /**
-     * @return void
-     */
     public function testPaymentRestApiFacadeWillMapSingleForeignPaymentToQuote(): void
     {
         // Arrange
@@ -88,9 +82,6 @@ class PaymentsRestApiFacadeTest extends Unit
         $this->assertCount(0, $actualQuote->getPayments());
     }
 
-    /**
-     * @return void
-     */
     public function testPaymentRestApiFacadeWillMapNoPaymentsToQuote(): void
     {
         /** @var \Spryker\Zed\PaymentsRestApi\Business\PaymentsRestApiFacadeInterface $paymentsRestApiFacade */
@@ -105,9 +96,6 @@ class PaymentsRestApiFacadeTest extends Unit
         $this->assertCount(0, $actualQuote->getPayments());
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\RestCheckoutRequestAttributesTransfer
-     */
     protected function prepareRestCheckoutRequestAttributesTransferWithSinglePayment(): RestCheckoutRequestAttributesTransfer
     {
         /** @var \Generated\Shared\Transfer\RestCheckoutRequestAttributesTransfer $restCheckoutRequestAttributesTransfer */
@@ -118,9 +106,6 @@ class PaymentsRestApiFacadeTest extends Unit
         return $restCheckoutRequestAttributesTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\RestCheckoutRequestAttributesTransfer
-     */
     protected function prepareRestCheckoutRequestAttributesTransferWithSingleForeignPayment(): RestCheckoutRequestAttributesTransfer
     {
         /** @var \Generated\Shared\Transfer\RestCheckoutRequestAttributesTransfer $restCheckoutRequestAttributesTransfer */
@@ -131,9 +116,6 @@ class PaymentsRestApiFacadeTest extends Unit
         return $restCheckoutRequestAttributesTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\RestCheckoutRequestAttributesTransfer
-     */
     protected function prepareRestCheckoutRequestAttributesTransferWithoutPayments(): RestCheckoutRequestAttributesTransfer
     {
         /** @var \Generated\Shared\Transfer\RestCheckoutRequestAttributesTransfer $restCheckoutRequestAttributesTransfer */
@@ -142,9 +124,6 @@ class PaymentsRestApiFacadeTest extends Unit
         return $restCheckoutRequestAttributesTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function prepareQuoteTransfer(): QuoteTransfer
     {
         /** @var \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer */
@@ -155,9 +134,6 @@ class PaymentsRestApiFacadeTest extends Unit
         return $quoteTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\DataBuilder\RestPaymentBuilder
-     */
     protected function prepareRestPayment(): RestPaymentBuilder
     {
         return (new RestPaymentBuilder([
@@ -167,9 +143,6 @@ class PaymentsRestApiFacadeTest extends Unit
         ]));
     }
 
-    /**
-     * @return \Generated\Shared\DataBuilder\RestPaymentBuilder
-     */
     protected function prepareForeignRestPayment(): RestPaymentBuilder
     {
         return (new RestPaymentBuilder([

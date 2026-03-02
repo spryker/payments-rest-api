@@ -25,11 +25,6 @@ class PaymentsRestApiToPaymentAppClientBridge implements PaymentsRestApiToPaymen
         $this->paymentAppClient = $paymentAppClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentCustomerRequestTransfer $paymentCustomerRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentCustomerResponseTransfer
-     */
     public function getCustomer(
         PaymentCustomerRequestTransfer $paymentCustomerRequestTransfer
     ): PaymentCustomerResponseTransfer {

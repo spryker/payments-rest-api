@@ -47,9 +47,6 @@ class PaymentCustomersResourceControllerTest extends Unit
      */
     protected PaymentsRestApiControllerTester $tester;
 
-    /**
-     * @return void
-     */
     public function _before(): void
     {
         parent::_before();
@@ -57,9 +54,6 @@ class PaymentCustomersResourceControllerTest extends Unit
         $this->tester->getContainer()->set(static::SERVICE_RESOURCE_BUILDER, new RestResourceBuilder());
     }
 
-    /**
-     * @return void
-     */
     public function testRequestCustomerReturnsCreatedHttpResponseWithCustomerData(): void
     {
         // Arrange
@@ -122,9 +116,6 @@ class PaymentCustomersResourceControllerTest extends Unit
         $this->assertInstanceOf(RestPaymentCustomersResponseAttributesTransfer::class, $attributes);
     }
 
-    /**
-     * @return void
-     */
     public function testRequestCustomerReturnsUnprocessableHttpResponseWhenPaymentMethodWasNotFound(): void
     {
         // Arrange

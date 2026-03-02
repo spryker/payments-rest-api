@@ -17,21 +17,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PaymentCustomerRestResponseBuilder implements PaymentCustomerRestResponseBuilderInterface
 {
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceBuilderInterface $restResourceBuilder
-     * @param \Spryker\Glue\PaymentsRestApi\Processor\Mapper\PaymentCustomerMapperInterface $paymentCustomerMapper
-     */
     public function __construct(
         protected RestResourceBuilderInterface $restResourceBuilder,
         protected PaymentCustomerMapperInterface $paymentCustomerMapper
     ) {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentCustomerResponseTransfer $paymentCustomerResponseTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createPaymentCustomersRestResponse(
         PaymentCustomerResponseTransfer $paymentCustomerResponseTransfer
     ): RestResponseInterface {
@@ -55,12 +46,6 @@ class PaymentCustomerRestResponseBuilder implements PaymentCustomerRestResponseB
         return $restResponse->addResource($restResource);
     }
 
-    /**
-     * @param string $error
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface $restResponse
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     protected function addErrorToRestResponse(
         string $error,
         RestResponseInterface $restResponse

@@ -14,11 +14,6 @@ use Generated\Shared\Transfer\RestPaymentCustomersResponseAttributesTransfer;
 
 class PaymentCustomerMapper implements PaymentCustomerMapperInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PaymentCustomerResponseTransfer $paymentCustomerResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestPaymentCustomersResponseAttributesTransfer
-     */
     public function mapPaymentCustomerResponseTransferToRestPaymentCustomersResponseAttributesTransfer(
         PaymentCustomerResponseTransfer $paymentCustomerResponseTransfer
     ): RestPaymentCustomersResponseAttributesTransfer {
@@ -45,11 +40,6 @@ class PaymentCustomerMapper implements PaymentCustomerMapperInterface
         return $restPaymentCustomersResponseAttributesTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AddressTransfer $addressTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestAddressAttributesTransfer
-     */
     protected function mapAddressTransferToRestAddressAttributesTransfer(
         AddressTransfer $addressTransfer
     ): RestAddressAttributesTransfer {

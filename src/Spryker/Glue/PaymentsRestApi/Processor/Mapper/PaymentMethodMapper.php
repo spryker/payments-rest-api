@@ -23,9 +23,6 @@ class PaymentMethodMapper implements PaymentMethodMapperInterface
      */
     protected $config;
 
-    /**
-     * @param \Spryker\Glue\PaymentsRestApi\PaymentsRestApiConfig $config
-     */
     public function __construct(PaymentsRestApiConfig $config)
     {
         $this->config = $config;
@@ -52,13 +49,6 @@ class PaymentMethodMapper implements PaymentMethodMapperInterface
         return $restPaymentMethodsAttributesTransfers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestCheckoutDataTransfer $restCheckoutDataTransfer
-     * @param \Generated\Shared\Transfer\RestCheckoutRequestAttributesTransfer $restCheckoutRequestAttributesTransfer
-     * @param \Generated\Shared\Transfer\RestCheckoutDataResponseAttributesTransfer $restCheckoutDataResponseAttributesTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestCheckoutDataResponseAttributesTransfer
-     */
     public function mapRestCheckoutDataResponseTransferToRestCheckoutDataResponseAttributesTransfer(
         RestCheckoutDataTransfer $restCheckoutDataTransfer,
         RestCheckoutRequestAttributesTransfer $restCheckoutRequestAttributesTransfer,
@@ -89,12 +79,6 @@ class PaymentMethodMapper implements PaymentMethodMapperInterface
         return $restCheckoutDataResponseAttributesTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestCheckoutRequestAttributesTransfer $restCheckoutRequestAttributesTransfer
-     * @param \Generated\Shared\Transfer\PaymentProviderTransfer $paymentProviderTransfer
-     *
-     * @return bool
-     */
     protected function isPaymentProviderRequested(
         RestCheckoutRequestAttributesTransfer $restCheckoutRequestAttributesTransfer,
         PaymentProviderTransfer $paymentProviderTransfer
@@ -109,13 +93,6 @@ class PaymentMethodMapper implements PaymentMethodMapperInterface
         return false;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestCheckoutDataResponseAttributesTransfer $restCheckoutDataResponseAttributesTransfer
-     * @param \Generated\Shared\Transfer\PaymentProviderTransfer $paymentProviderTransfer
-     * @param \Generated\Shared\Transfer\RestCheckoutRequestAttributesTransfer $restCheckoutRequestAttributesTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestCheckoutDataResponseAttributesTransfer
-     */
     protected function addSelectedPaymentMethodToRestCheckoutDataResponseAttributesTransfer(
         RestCheckoutDataResponseAttributesTransfer $restCheckoutDataResponseAttributesTransfer,
         PaymentProviderTransfer $paymentProviderTransfer,
@@ -141,12 +118,6 @@ class PaymentMethodMapper implements PaymentMethodMapperInterface
         return $restCheckoutDataResponseAttributesTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestCheckoutRequestAttributesTransfer $restCheckoutRequestAttributesTransfer
-     * @param \Generated\Shared\Transfer\PaymentMethodTransfer $paymentMethodTransfer
-     *
-     * @return bool
-     */
     protected function isPaymentMethodRequested(
         RestCheckoutRequestAttributesTransfer $restCheckoutRequestAttributesTransfer,
         PaymentMethodTransfer $paymentMethodTransfer
@@ -161,12 +132,6 @@ class PaymentMethodMapper implements PaymentMethodMapperInterface
         return false;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentMethodTransfer $paymentMethodTransfer
-     * @param \Generated\Shared\Transfer\PaymentProviderTransfer $paymentProviderTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestPaymentMethodTransfer
-     */
     protected function createRestPaymentMethodTransfer(
         PaymentMethodTransfer $paymentMethodTransfer,
         PaymentProviderTransfer $paymentProviderTransfer
@@ -182,11 +147,6 @@ class PaymentMethodMapper implements PaymentMethodMapperInterface
             );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentMethodTransfer $paymentMethodTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestPaymentMethodsAttributesTransfer
-     */
     protected function createRestPaymentMethodAttributesTransfer(
         PaymentMethodTransfer $paymentMethodTransfer
     ): RestPaymentMethodsAttributesTransfer {

@@ -27,11 +27,6 @@ class PaymentsRestApiDependencyProvider extends AbstractBundleDependencyProvider
      */
     public const CLIENT_PAYMENT_APP = 'PAYMENTS_REST_API:CLIENT_PAYMENT_APP';
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     public function provideDependencies(Container $container): Container
     {
         $container = $this->addPaymentClient($container);
@@ -39,11 +34,6 @@ class PaymentsRestApiDependencyProvider extends AbstractBundleDependencyProvider
         return $this->addPaymentAppClient($container);
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     protected function addPaymentClient(Container $container): Container
     {
         $container->set(static::CLIENT_PAYMENT, function (Container $container) {
@@ -53,11 +43,6 @@ class PaymentsRestApiDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     protected function addPaymentAppClient(Container $container): Container
     {
         $container->set(static::CLIENT_PAYMENT_APP, function (Container $container) {

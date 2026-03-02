@@ -12,11 +12,6 @@ use Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface;
 
 interface PaymentCustomerRestResponseBuilderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PaymentCustomerResponseTransfer $paymentCustomerResponseTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createPaymentCustomersRestResponse(
         PaymentCustomerResponseTransfer $paymentCustomerResponseTransfer
     ): RestResponseInterface;

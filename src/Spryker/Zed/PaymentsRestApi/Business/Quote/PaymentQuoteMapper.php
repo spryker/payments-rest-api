@@ -20,20 +20,11 @@ class PaymentQuoteMapper implements PaymentQuoteMapperInterface
      */
     protected PaymentsRestApiToPaymentFacadeInterface $paymentFacade;
 
-    /**
-     * @param \Spryker\Zed\PaymentsRestApi\Dependency\Facade\PaymentsRestApiToPaymentFacadeInterface $paymentFacade
-     */
     public function __construct(PaymentsRestApiToPaymentFacadeInterface $paymentFacade)
     {
         $this->paymentFacade = $paymentFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestCheckoutRequestAttributesTransfer $restCheckoutRequestAttributesTransfer
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function mapPaymentsToQuote(
         RestCheckoutRequestAttributesTransfer $restCheckoutRequestAttributesTransfer,
         QuoteTransfer $quoteTransfer
@@ -43,12 +34,6 @@ class PaymentQuoteMapper implements PaymentQuoteMapperInterface
         return $this->mapPreOrderPaymentDataToQuote($restCheckoutRequestAttributesTransfer, $quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestCheckoutRequestAttributesTransfer $restCheckoutRequestAttributesTransfer
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function mapPaymentTransfersToQuote(
         RestCheckoutRequestAttributesTransfer $restCheckoutRequestAttributesTransfer,
         QuoteTransfer $quoteTransfer
@@ -70,12 +55,6 @@ class PaymentQuoteMapper implements PaymentQuoteMapperInterface
         return $quoteTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestCheckoutRequestAttributesTransfer $restCheckoutRequestAttributesTransfer
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function mapPreOrderPaymentDataToQuote(
         RestCheckoutRequestAttributesTransfer $restCheckoutRequestAttributesTransfer,
         QuoteTransfer $quoteTransfer
@@ -85,11 +64,6 @@ class PaymentQuoteMapper implements PaymentQuoteMapperInterface
         return $quoteTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestPaymentTransfer $restPaymentTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentTransfer
-     */
     protected function preparePaymentTransfer(RestPaymentTransfer $restPaymentTransfer): PaymentTransfer
     {
         $paymentTransfer = (new PaymentTransfer())->fromArray($restPaymentTransfer->toArray(), true);

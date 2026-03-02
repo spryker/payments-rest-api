@@ -18,9 +18,6 @@ class PaymentMethodByCheckoutDataExpander implements PaymentMethodByCheckoutData
      */
     protected $paymentMethodRestResponseBuilder;
 
-    /**
-     * @param \Spryker\Glue\PaymentsRestApi\Processor\RestResponseBuilder\PaymentMethodRestResponseBuilderInterface $paymentMethodRestResponseBuilder
-     */
     public function __construct(PaymentMethodRestResponseBuilderInterface $paymentMethodRestResponseBuilder)
     {
         $this->paymentMethodRestResponseBuilder = $paymentMethodRestResponseBuilder;

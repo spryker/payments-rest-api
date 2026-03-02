@@ -12,11 +12,6 @@ use Generated\Shared\Transfer\RestPaymentCustomersResponseAttributesTransfer;
 
 interface PaymentCustomerMapperInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PaymentCustomerResponseTransfer $paymentCustomerResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestPaymentCustomersResponseAttributesTransfer
-     */
     public function mapPaymentCustomerResponseTransferToRestPaymentCustomersResponseAttributesTransfer(
         PaymentCustomerResponseTransfer $paymentCustomerResponseTransfer
     ): RestPaymentCustomersResponseAttributesTransfer;

@@ -1,0 +1,11 @@
+post:
+    payment:
+        - Collection:
+              fields:
+                  paymentMethodName:
+                      - NotBlank: ~
+                  paymentProviderName:
+                      - NotBlank: ~
+
+    customerPaymentServiceProviderData:
+        - NotBlank: ~

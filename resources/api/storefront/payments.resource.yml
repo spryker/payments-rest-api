@@ -1,0 +1,103 @@
+resource:
+    name: Payments
+    shortName: payments
+    description: 'Pre-order payment initialization'
+
+    processor: Spryker\Glue\PaymentsRestApi\Api\Storefront\Processor\PaymentsStorefrontProcessor
+
+    paginationEnabled: false
+
+    operations:
+        - type: Post
+          description: 'Initialize a pre-order payment'
+
+    properties:
+        paymentId:
+            type: string
+            identifier: true
+            writable: false
+            readable: true
+            required: false
+            description: 'Identifier of the initialized payment'
+            openapiContext:
+                example: '0'
+
+        payment:
+            type: map
+            writable: true
+            readable: false
+            required: true
+            description: 'Payment selection for the pre-order initialization'
+            openapiContext:
+                required: ['paymentProviderName', 'paymentMethodName', 'amount']
+                properties:
+                    paymentProviderName:
+                        type: string
+                        example: 'DummyPayment'
+                    paymentMethodName:
+                        type: string
+                        example: 'Invoice'
+                    amount:
+                        type: integer
+                        description: 'Amount in minor units (cents)'
+                        example: 9999
+                example:
+                    paymentProviderName: 'DummyPayment'
+                    paymentMethodName: 'Invoice'
+                    amount: 9999
+
+        quote:
+            type: map
+            writable: true
+            readable: false
+            required: true
+            description: 'Quote context required to initialize the payment'
+            openapiContext:
+                required: ['customer', 'billingAddress', 'currency']
+                properties:
+                    customer:
+                        type: object
+                        required: ['firstName', 'lastName', 'email']
+                        properties:
+                            firstName: { type: string, example: 'Sonia' }
+                            lastName: { type: string, example: 'Wagner' }
+                            email: { type: string, format: email, example: 'sonia@acme.com' }
+                    billingAddress:
+                        type: object
+                        required: ['iso2Code']
+                        properties:
+                            iso2Code: { type: string, example: 'DE' }
+                    currency:
+                        type: object
+                        required: ['code']
+                        properties:
+                            code: { type: string, example: 'EUR' }
+                example:
+                    customer:
+                        firstName: 'Sonia'
+                        lastName: 'Wagner'
+                        email: 'sonia@acme.com'
+                    billingAddress:
+                        iso2Code: 'DE'
+                    currency:
+                        code: 'EUR'
+
+        preOrderPaymentData:
+            type: map
+            writable: false
+            readable: true
+            required: false
+            description: 'PSP-specific response payload returned by the payment provider'
+            openapiContext:
+                example:
+                    transactionId: 'tx_abc123'
+                    redirectUrl: 'https://psp.example.com/pay/tx_abc123'
+
+        isSuccessful:
+            type: boolean
+            writable: false
+            readable: true
+            required: false
+            description: 'Indicates whether payment initialization succeeded'
+            openapiContext:
+                example: true

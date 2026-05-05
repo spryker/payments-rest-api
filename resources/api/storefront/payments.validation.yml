@@ -1,0 +1,39 @@
+post:
+    quote:
+        - NotBlank: ~
+        - Collection:
+              fields:
+                  customer:
+                      - Collection:
+                            fields:
+                                firstName:
+                                    - NotBlank: ~
+                                lastName:
+                                    - NotBlank: ~
+                                email:
+                                    - NotBlank: ~
+                                    - Email: ~
+                  billingAddress:
+                      - Collection:
+                            fields:
+                                iso2Code:
+                                    - NotBlank: ~
+                                    - Country: ~
+                  currency:
+                      - Collection:
+                            fields:
+                                code:
+                                    - NotBlank: ~
+                                    - Currency: ~
+
+    payment:
+        - Collection:
+              fields:
+                  amount:
+                      - NotBlank: ~
+                      - Type:
+                            type: numeric
+                  paymentMethodName:
+                      - NotBlank: ~
+                  paymentProviderName:
+                      - NotBlank: ~

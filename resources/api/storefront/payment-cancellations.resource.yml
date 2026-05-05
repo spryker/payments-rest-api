@@ -1,0 +1,75 @@
+resource:
+    name: PaymentCancellations
+    shortName: payment-cancellations
+    description: 'Pre-order payment cancellation'
+
+    processor: Spryker\Glue\PaymentsRestApi\Api\Storefront\Processor\PaymentCancellationsStorefrontProcessor
+
+    paginationEnabled: false
+
+    operations:
+        - type: Post
+          description: 'Cancel a pre-order payment'
+
+    properties:
+        cancellationId:
+            type: string
+            identifier: true
+            writable: false
+            readable: true
+            required: false
+            description: 'Identifier of the cancellation request'
+            openapiContext:
+                example: '0'
+
+        payment:
+            type: map
+            writable: true
+            readable: false
+            required: true
+            description: 'Payment selection of the payment being cancelled'
+            openapiContext:
+                required: ['paymentProviderName', 'paymentMethodName']
+                properties:
+                    paymentProviderName:
+                        type: string
+                        example: 'DummyPayment'
+                    paymentMethodName:
+                        type: string
+                        example: 'Invoice'
+                example:
+                    paymentProviderName: 'DummyPayment'
+                    paymentMethodName: 'Invoice'
+
+        preOrderPaymentData:
+            type: map
+            writable: true
+            readable: false
+            required: true
+            description: 'PSP-issued payload from the original pre-order initialization, replayed to identify the transaction to cancel'
+            openapiContext:
+                required: ['transactionId']
+                properties:
+                    transactionId:
+                        type: string
+                        example: 'tx_abc123'
+                example:
+                    transactionId: 'tx_abc123'
+
+        isSuccessful:
+            type: boolean
+            writable: false
+            readable: true
+            required: false
+            description: 'Indicates whether the cancellation succeeded'
+            openapiContext:
+                example: true
+
+        error:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Error message returned when cancellation fails'
+            openapiContext:
+                example: 'Payment cancellation failed'

@@ -1,0 +1,75 @@
+resource:
+    name: PaymentCustomers
+    shortName: payment-customers
+    description: 'Payment customer data retrieval'
+
+    processor: Spryker\Glue\PaymentsRestApi\Api\Storefront\Processor\PaymentCustomersStorefrontProcessor
+
+    paginationEnabled: false
+
+    operations:
+        - type: Post
+          description: 'Get payment customer data'
+
+    properties:
+        customerId:
+            type: string
+            identifier: true
+            writable: false
+            readable: true
+            required: false
+            description: 'Identifier of the resolved payment customer'
+            openapiContext:
+                example: '0'
+
+        customer:
+            type: map
+            writable: true
+            readable: true
+            required: true
+            description: 'Customer context sent in the request, enriched with PSP data in the response'
+            openapiContext:
+                example:
+                    firstName: 'Sonia'
+                    lastName: 'Wagner'
+                    email: 'sonia@acme.com'
+                    salutation: 'Mrs'
+
+        payment:
+            type: map
+            writable: true
+            readable: false
+            required: true
+            description: 'Payment selection used to resolve the customer at the PSP'
+            openapiContext:
+                required: ['paymentProviderName', 'paymentMethodName']
+                properties:
+                    paymentProviderName:
+                        type: string
+                        example: 'DummyPayment'
+                    paymentMethodName:
+                        type: string
+                        example: 'Invoice'
+                example:
+                    paymentProviderName: 'Invoice'
+                    paymentMethodName: 'Invoice'
+
+        customerPaymentServiceProviderData:
+            type: map
+            writable: true
+            readable: false
+            required: true
+            description: 'PSP-specific customer payload (shape determined by the payment provider)'
+            openapiContext:
+                example:
+                    pspCustomerId: 'cus_abc123'
+                    token: 'tok_xyz789'
+
+        isSuccessful:
+            type: boolean
+            writable: false
+            readable: true
+            required: false
+            description: 'Indicates whether the customer lookup succeeded'
+            openapiContext:
+                example: true

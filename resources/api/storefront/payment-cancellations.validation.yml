@@ -1,0 +1,14 @@
+post:
+    payment:
+        - Collection:
+              fields:
+                  paymentMethodName:
+                      - NotBlank: ~
+                  paymentProviderName:
+                      - NotBlank: ~
+
+    preOrderPaymentData:
+        - Collection:
+              fields:
+                  transactionId:
+                      - NotBlank: ~

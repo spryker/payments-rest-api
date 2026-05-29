@@ -1,0 +1,66 @@
+resource:
+    name: PaymentMethods
+    shortName: payment-methods
+    description: 'Available payment methods exposed as a relationship target for `checkout-data`. Populated through `Spryker\Glue\PaymentsRestApi\Api\Storefront\Relationship\CheckoutDataPaymentMethodsRelationshipResolver`; not addressable as a standalone endpoint (legacy had no `payment-methods` route, only the `?include=payment-methods` relationship on checkout-data).'
+
+    properties:
+        idPaymentMethod:
+            type: string
+            identifier: true
+            readable: true
+            writable: false
+            required: false
+            description: 'Payment method identifier.'
+            openapiContext:
+                example: '5'
+
+        paymentMethodName:
+            type: string
+            nullable: true
+            readable: true
+            writable: false
+            required: false
+            description: 'The name of the payment method.'
+            openapiContext:
+                example: 'Invoice'
+
+        paymentProviderName:
+            type: string
+            nullable: true
+            readable: true
+            writable: false
+            required: false
+            description: 'The name of the payment provider.'
+            openapiContext:
+                example: 'DummyPayment'
+
+        priority:
+            type: integer
+            nullable: true
+            readable: true
+            writable: false
+            required: false
+            description: 'Numerical value that determines the processing order; lower numbers often have higher priority.'
+            openapiContext:
+                example: 1
+
+        requiredRequestData:
+            type: array
+            readable: true
+            writable: false
+            required: false
+            description: 'List of data fields required by this payment method to process a payment.'
+            openapiContext:
+                example:
+                    - 'paymentMethod'
+                    - 'paymentProvider'
+
+        paymentMethodAppConfiguration:
+            type: array
+            nullable: true
+            readable: true
+            writable: false
+            required: false
+            description: 'Configuration for a payment method provided by an app; null for methods without app configuration.'
+            openapiContext:
+                example: null

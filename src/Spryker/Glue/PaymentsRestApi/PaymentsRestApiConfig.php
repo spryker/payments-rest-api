@@ -12,21 +12,29 @@ use Spryker\Glue\Kernel\AbstractBundleConfig;
 class PaymentsRestApiConfig extends AbstractBundleConfig
 {
     /**
+     * @api
+     *
      * @var string
      */
     public const RESOURCE_TYPE_PAYMENTS = 'payments';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESOURCE_PAYMENT_METHODS = 'payment-methods';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESOURCE_TYPE_PAYMENT_CANCELLATIONS = 'payment-cancellations';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const RESOURCE_TYPE_PAYMENT_CUSTOMERS = 'payment-customers';

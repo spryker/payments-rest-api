@@ -12,6 +12,8 @@ use Spryker\Shared\Kernel\AbstractBundleConfig;
 class PaymentsRestApiConfig extends AbstractBundleConfig
 {
     /**
+     * @api
+     *
      * @uses \Spryker\Zed\Payment\PaymentConfig::PAYMENT_FOREIGN_PROVIDER
      *
      * @var string

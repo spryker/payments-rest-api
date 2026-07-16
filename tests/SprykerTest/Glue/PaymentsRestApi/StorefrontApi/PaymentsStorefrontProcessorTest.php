@@ -12,6 +12,8 @@ namespace SprykerTest\Glue\PaymentsRestApi\StorefrontApi;
 use ApiPlatform\Metadata\Post;
 use Codeception\Stub;
 use Codeception\Test\Unit;
+use Generated\Api\Storefront\Payments\PaymentsPaymentStorefrontObject;
+use Generated\Api\Storefront\Payments\PaymentsQuoteStorefrontObject;
 use Generated\Api\Storefront\PaymentsStorefrontResource;
 use Generated\Shared\Transfer\PreOrderPaymentResponseTransfer;
 use Spryker\Client\Payment\PaymentClientInterface;
@@ -120,16 +122,16 @@ class PaymentsStorefrontProcessorTest extends Unit
     protected function createResource(): PaymentsStorefrontResource
     {
         $resource = new PaymentsStorefrontResource();
-        $resource->payment = [
+        $resource->payment = PaymentsPaymentStorefrontObject::fromArray([
             'paymentProviderName' => static::PAYMENT_PROVIDER_NAME,
             'paymentMethodName' => static::PAYMENT_METHOD_NAME,
             'amount' => static::PAYMENT_AMOUNT,
-        ];
-        $resource->quote = [
+        ]);
+        $resource->quote = PaymentsQuoteStorefrontObject::fromArray([
             'customer' => ['firstName' => 'Sonia', 'lastName' => 'Wagner', 'email' => 'sonia@spryker.com'],
             'billingAddress' => ['iso2Code' => 'DE'],
             'currency' => ['code' => 'EUR'],
-        ];
+        ]);
 
         return $resource;
     }

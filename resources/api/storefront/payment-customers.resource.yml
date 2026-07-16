@@ -23,36 +23,52 @@ resource:
                 example: '0'
 
         customer:
-            type: map
+            type: object
+            objectName: Customer
             writable: true
             readable: true
             required: true
             description: 'Customer context sent in the request, enriched with PSP data in the response'
-            openapiContext:
-                example:
-                    firstName: 'Sonia'
-                    lastName: 'Wagner'
-                    email: 'sonia@acme.com'
-                    salutation: 'Mrs'
+            properties:
+                salutation:
+                    type: string
+                    description: 'Customer salutation.'
+                    openapiContext:
+                        example: 'Mrs'
+                firstName:
+                    type: string
+                    description: 'Customer first name.'
+                    openapiContext:
+                        example: 'Sonia'
+                lastName:
+                    type: string
+                    description: 'Customer last name.'
+                    openapiContext:
+                        example: 'Wagner'
+                email:
+                    type: string
+                    description: 'Customer email address.'
+                    openapiContext:
+                        example: 'sonia@acme.com'
 
         payment:
-            type: map
+            type: object
+            objectName: PaymentSelection
             writable: true
             readable: false
             required: true
             description: 'Payment selection used to resolve the customer at the PSP'
-            openapiContext:
-                required: ['paymentProviderName', 'paymentMethodName']
-                properties:
-                    paymentProviderName:
-                        type: string
-                        example: 'DummyPayment'
-                    paymentMethodName:
-                        type: string
+            properties:
+                paymentProviderName:
+                    type: string
+                    description: 'Payment provider name.'
+                    openapiContext:
                         example: 'Invoice'
-                example:
-                    paymentProviderName: 'Invoice'
-                    paymentMethodName: 'Invoice'
+                paymentMethodName:
+                    type: string
+                    description: 'Payment method name.'
+                    openapiContext:
+                        example: 'Invoice'
 
         customerPaymentServiceProviderData:
             type: map

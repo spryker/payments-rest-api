@@ -33,16 +33,16 @@ class PaymentsStorefrontProcessor extends AbstractStorefrontProcessor
     {
         $preOrderPaymentRequestTransfer = (new PreOrderPaymentRequestTransfer())->fromArray(
             [
-                'payment' => $data->payment ?? [],
-                'quote' => $data->quote ?? [],
+                'payment' => $data->payment?->toArray() ?? [],
+                'quote' => $data->quote?->toArray() ?? [],
             ],
             true,
         );
 
         $paymentTransfer = (new PaymentTransfer())
-            ->setPaymentProviderName($data->payment['paymentProviderName'] ?? null)
-            ->setPaymentMethodName($data->payment['paymentMethodName'] ?? null)
-            ->setAmount($data->payment['amount'] ?? null);
+            ->setPaymentProviderName($data->payment?->getPaymentProviderName())
+            ->setPaymentMethodName($data->payment?->getPaymentMethodName())
+            ->setAmount($data->payment?->getAmount());
 
         $preOrderPaymentRequestTransfer->setPayment($paymentTransfer);
         $preOrderPaymentRequestTransfer->getQuoteOrFail()->setPayment($paymentTransfer);

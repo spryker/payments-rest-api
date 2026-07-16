@@ -33,15 +33,15 @@ class PaymentCancellationsStorefrontProcessor extends AbstractStorefrontProcesso
     {
         $preOrderPaymentRequestTransfer = (new PreOrderPaymentRequestTransfer())->fromArray(
             [
-                'payment' => $data->payment ?? [],
+                'payment' => $data->payment?->toArray() ?? [],
                 'preOrderPaymentData' => $data->preOrderPaymentData ?? [],
             ],
             true,
         );
 
         $paymentTransfer = (new PaymentTransfer())
-            ->setPaymentProviderName($data->payment['paymentProviderName'] ?? null)
-            ->setPaymentMethodName($data->payment['paymentMethodName'] ?? null);
+            ->setPaymentProviderName($data->payment?->getPaymentProviderName())
+            ->setPaymentMethodName($data->payment?->getPaymentMethodName());
 
         $preOrderPaymentRequestTransfer->setPayment($paymentTransfer);
 

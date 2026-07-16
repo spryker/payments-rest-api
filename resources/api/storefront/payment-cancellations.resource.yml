@@ -23,23 +23,23 @@ resource:
                 example: '0'
 
         payment:
-            type: map
+            type: object
+            objectName: PaymentSelection
             writable: true
             readable: false
             required: true
             description: 'Payment selection of the payment being cancelled'
-            openapiContext:
-                required: ['paymentProviderName', 'paymentMethodName']
-                properties:
-                    paymentProviderName:
-                        type: string
+            properties:
+                paymentProviderName:
+                    type: string
+                    description: 'Payment provider name.'
+                    openapiContext:
                         example: 'DummyPayment'
-                    paymentMethodName:
-                        type: string
+                paymentMethodName:
+                    type: string
+                    description: 'Payment method name.'
+                    openapiContext:
                         example: 'Invoice'
-                example:
-                    paymentProviderName: 'DummyPayment'
-                    paymentMethodName: 'Invoice'
 
         preOrderPaymentData:
             type: map

@@ -23,64 +23,74 @@ resource:
                 example: '0'
 
         payment:
-            type: map
+            type: object
+            objectName: PaymentSelection
             writable: true
             readable: false
             required: true
             description: 'Payment selection for the pre-order initialization'
-            openapiContext:
-                required: ['paymentProviderName', 'paymentMethodName', 'amount']
-                properties:
-                    paymentProviderName:
-                        type: string
+            properties:
+                paymentProviderName:
+                    type: string
+                    description: 'Payment provider name.'
+                    openapiContext:
                         example: 'DummyPayment'
-                    paymentMethodName:
-                        type: string
+                paymentMethodName:
+                    type: string
+                    description: 'Payment method name.'
+                    openapiContext:
                         example: 'Invoice'
-                    amount:
-                        type: integer
-                        description: 'Amount in minor units (cents)'
+                amount:
+                    type: integer
+                    description: 'Amount in minor units (cents).'
+                    openapiContext:
                         example: 9999
-                example:
-                    paymentProviderName: 'DummyPayment'
-                    paymentMethodName: 'Invoice'
-                    amount: 9999
 
         quote:
-            type: map
+            type: object
+            objectName: PaymentQuote
             writable: true
             readable: false
             required: true
             description: 'Quote context required to initialize the payment'
-            openapiContext:
-                required: ['customer', 'billingAddress', 'currency']
-                properties:
-                    customer:
-                        type: object
-                        required: ['firstName', 'lastName', 'email']
-                        properties:
-                            firstName: { type: string, example: 'Sonia' }
-                            lastName: { type: string, example: 'Wagner' }
-                            email: { type: string, format: email, example: 'sonia@acme.com' }
-                    billingAddress:
-                        type: object
-                        required: ['iso2Code']
-                        properties:
-                            iso2Code: { type: string, example: 'DE' }
-                    currency:
-                        type: object
-                        required: ['code']
-                        properties:
-                            code: { type: string, example: 'EUR' }
-                example:
-                    customer:
-                        firstName: 'Sonia'
-                        lastName: 'Wagner'
-                        email: 'sonia@acme.com'
-                    billingAddress:
-                        iso2Code: 'DE'
-                    currency:
-                        code: 'EUR'
+            properties:
+                customer:
+                    type: object
+                    description: 'Customer context.'
+                    properties:
+                        firstName:
+                            type: string
+                            description: 'Customer first name.'
+                            openapiContext:
+                                example: 'Sonia'
+                        lastName:
+                            type: string
+                            description: 'Customer last name.'
+                            openapiContext:
+                                example: 'Wagner'
+                        email:
+                            type: string
+                            description: 'Customer email address.'
+                            openapiContext:
+                                example: 'sonia@acme.com'
+                billingAddress:
+                    type: object
+                    description: 'Billing address.'
+                    properties:
+                        iso2Code:
+                            type: string
+                            description: 'ISO2 country code.'
+                            openapiContext:
+                                example: 'DE'
+                currency:
+                    type: object
+                    description: 'Currency.'
+                    properties:
+                        code:
+                            type: string
+                            description: 'Currency code.'
+                            openapiContext:
+                                example: 'EUR'
 
         preOrderPaymentData:
             type: map

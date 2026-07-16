@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Spryker\Glue\PaymentsRestApi\Api\Storefront\Processor;
 
+use Generated\Api\Storefront\PaymentCustomers\PaymentCustomersCustomerStorefrontObject;
 use Generated\Api\Storefront\PaymentCustomersStorefrontResource;
 use Generated\Shared\Transfer\PaymentCustomerRequestTransfer;
 use Spryker\ApiPlatform\State\Processor\AbstractStorefrontProcessor;
@@ -35,8 +36,8 @@ class PaymentCustomersStorefrontProcessor extends AbstractStorefrontProcessor
     {
         $paymentCustomerRequestTransfer = (new PaymentCustomerRequestTransfer())->fromArray(
             [
-                'customer' => $data->customer ?? [],
-                'payment' => $data->payment ?? [],
+                'customer' => $data->customer?->toArray() ?? [],
+                'payment' => $data->payment?->toArray() ?? [],
                 'customerPaymentServiceProviderData' => $data->customerPaymentServiceProviderData ?? [],
             ],
             true,
@@ -56,7 +57,8 @@ class PaymentCustomersStorefrontProcessor extends AbstractStorefrontProcessor
         }
 
         $data->isSuccessful = $paymentCustomerResponseTransfer->getIsSuccessful();
-        $data->customer = $paymentCustomerResponseTransfer->getCustomer()?->toArray() ?? [];
+        $customerTransfer = $paymentCustomerResponseTransfer->getCustomer();
+        $data->customer = $customerTransfer !== null ? PaymentCustomersCustomerStorefrontObject::fromArray($customerTransfer->toArray(true, true)) : null;
 
         return $data;
     }

@@ -12,6 +12,8 @@ namespace SprykerTest\Glue\PaymentsRestApi\StorefrontApi;
 use ApiPlatform\Metadata\Post;
 use Codeception\Stub;
 use Codeception\Test\Unit;
+use Generated\Api\Storefront\PaymentCustomers\PaymentCustomersCustomerStorefrontObject;
+use Generated\Api\Storefront\PaymentCustomers\PaymentCustomersPaymentStorefrontObject;
 use Generated\Api\Storefront\PaymentCustomersStorefrontResource;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\PaymentCustomerResponseTransfer;
@@ -74,8 +76,9 @@ class PaymentCustomersStorefrontProcessorTest extends Unit
         // Assert
         $this->assertInstanceOf(PaymentCustomersStorefrontResource::class, $result);
         $this->assertTrue($result->getIsSuccessful());
-        $this->assertSame(static::CUSTOMER_EMAIL, $result->customer['email']);
-        $this->assertSame(static::CUSTOMER_FIRST_NAME, $result->customer['first_name']);
+        $this->assertNotNull($result->customer);
+        $this->assertSame(static::CUSTOMER_EMAIL, $result->customer->getEmail());
+        $this->assertSame(static::CUSTOMER_FIRST_NAME, $result->customer->getFirstName());
     }
 
     public function testGivenClientReturnsFailureWithErrorWhenProcessPostThenThrowsHttpExceptionWith422AndProvidedErrorMessage(): void
@@ -148,15 +151,15 @@ class PaymentCustomersStorefrontProcessorTest extends Unit
     protected function createResource(): PaymentCustomersStorefrontResource
     {
         $resource = new PaymentCustomersStorefrontResource();
-        $resource->payment = [
+        $resource->payment = PaymentCustomersPaymentStorefrontObject::fromArray([
             'paymentProviderName' => static::PAYMENT_PROVIDER_NAME,
             'paymentMethodName' => static::PAYMENT_METHOD_NAME,
-        ];
-        $resource->customer = [
+        ]);
+        $resource->customer = PaymentCustomersCustomerStorefrontObject::fromArray([
             'firstName' => static::CUSTOMER_FIRST_NAME,
             'lastName' => static::CUSTOMER_LAST_NAME,
             'email' => static::CUSTOMER_EMAIL,
-        ];
+        ]);
         $resource->customerPaymentServiceProviderData = [
             static::PSP_KEY => static::PSP_VALUE,
         ];

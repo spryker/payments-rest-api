@@ -46,7 +46,7 @@ class CheckoutDataPaymentMethodsRelationshipResolver extends AbstractRelationshi
                 ));
             }
 
-            foreach ($parent->paymentMethodsRelationshipData ?? [] as $paymentMethodData) {
+            foreach ($parent->paymentMethodsRelationshipData as $paymentMethodData) {
                 $resource = $this->buildPaymentMethodResource($paymentMethodData);
 
                 if ($resource !== null) {

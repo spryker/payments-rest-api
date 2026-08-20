@@ -10,6 +10,16 @@ resource:
     operations:
         - type: Post
           description: 'Cancel a pre-order payment'
+          normalizationContext:
+              gen_id: false
+          openapiContext:
+              responses:
+                  201:
+                      description: 'Pre-order payment cancelled.'
+                  400:
+                      description: 'Request body is missing or its resource type is not payment-cancellations.'
+                  422:
+                      description: 'Request attributes failed validation, or the payment provider rejected the cancellation.'
 
     properties:
         cancellationId:

@@ -67,8 +67,8 @@ class PaymentCustomersResourceControllerTest extends Unit
         $customerTransfer = new CustomerTransfer();
         $customerTransfer
             ->setEmail('spencor.hopkins@spryker.com')
-            ->setShippingAddress(new ArrayObject($addressTransfer))
-            ->setBillingAddress(new ArrayObject($addressTransfer));
+            ->setShippingAddress(new ArrayObject([$addressTransfer]))
+            ->setBillingAddress(new ArrayObject([$addressTransfer]));
 
         $paymentCustomerResponseTransfer = new PaymentCustomerResponseTransfer();
         $paymentCustomerResponseTransfer

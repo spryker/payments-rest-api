@@ -14,6 +14,7 @@ use Generated\Api\Storefront\PaymentCustomersStorefrontResource;
 use Generated\Shared\Transfer\PaymentCustomerRequestTransfer;
 use Spryker\ApiPlatform\State\Processor\AbstractStorefrontProcessor;
 use Spryker\Client\PaymentApp\PaymentAppClientInterface;
+use Spryker\Glue\PaymentsRestApi\PaymentsRestApiConfig;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
@@ -59,6 +60,8 @@ class PaymentCustomersStorefrontProcessor extends AbstractStorefrontProcessor
         $data->isSuccessful = $paymentCustomerResponseTransfer->getIsSuccessful();
         $customerTransfer = $paymentCustomerResponseTransfer->getCustomer();
         $data->customer = $customerTransfer !== null ? PaymentCustomersCustomerStorefrontObject::fromArray($customerTransfer->toArray(true, true)) : null;
+        // Synthetic identifier — see AbstractStorefrontProcessor.
+        $data->customerId = PaymentsRestApiConfig::RESOURCE_TYPE_PAYMENT_CUSTOMERS;
 
         return $data;
     }

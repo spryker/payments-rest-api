@@ -10,6 +10,8 @@ resource:
     operations:
         - type: Post
           description: 'Initialize a pre-order payment'
+          # The resource has no item operation, so there is no IRI to generate for the created
+          # representation — without this the success response fails to serialize.
           normalizationContext:
               gen_id: false
           openapiContext:

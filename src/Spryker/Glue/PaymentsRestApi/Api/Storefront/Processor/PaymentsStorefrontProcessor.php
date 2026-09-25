@@ -14,6 +14,7 @@ use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\PreOrderPaymentRequestTransfer;
 use Spryker\ApiPlatform\State\Processor\AbstractStorefrontProcessor;
 use Spryker\Client\Payment\PaymentClientInterface;
+use Spryker\Glue\PaymentsRestApi\PaymentsRestApiConfig;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
@@ -58,6 +59,8 @@ class PaymentsStorefrontProcessor extends AbstractStorefrontProcessor
 
         $data->isSuccessful = $preOrderPaymentResponseTransfer->getIsSuccessful();
         $data->preOrderPaymentData = $preOrderPaymentResponseTransfer->getPreOrderPaymentData();
+        // Synthetic identifier — see AbstractStorefrontProcessor.
+        $data->paymentId = PaymentsRestApiConfig::RESOURCE_TYPE_PAYMENTS;
 
         return $data;
     }

@@ -14,6 +14,7 @@ use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\PreOrderPaymentRequestTransfer;
 use Spryker\ApiPlatform\State\Processor\AbstractStorefrontProcessor;
 use Spryker\Client\Payment\PaymentClientInterface;
+use Spryker\Glue\PaymentsRestApi\PaymentsRestApiConfig;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
@@ -55,6 +56,8 @@ class PaymentCancellationsStorefrontProcessor extends AbstractStorefrontProcesso
         }
 
         $data->isSuccessful = $preOrderPaymentResponseTransfer->getIsSuccessful();
+        // Synthetic identifier — see AbstractStorefrontProcessor.
+        $data->cancellationId = PaymentsRestApiConfig::RESOURCE_TYPE_PAYMENT_CANCELLATIONS;
 
         return $data;
     }

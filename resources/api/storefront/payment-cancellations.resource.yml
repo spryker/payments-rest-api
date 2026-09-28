@@ -27,6 +27,7 @@ resource:
         cancellationId:
             type: string
             identifier: true
+            syntheticIdentifier: true
             writable: false
             readable: true
             required: false
@@ -82,6 +83,7 @@ resource:
             writable: false
             readable: true
             required: false
-            description: 'Error message returned when cancellation fails'
+            responseOptional: true
+            description: 'Error message returned when cancellation fails. Absent from the created response, which is what a successful cancellation answers.'
             openapiContext:
                 example: 'Payment cancellation failed'

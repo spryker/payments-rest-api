@@ -85,6 +85,7 @@ resource:
 
         customerPaymentServiceProviderData:
             type: map
+            allowWhitespace: true
             writable: true
             readable: false
             required: true

@@ -7,9 +7,9 @@
 
 namespace Spryker\Shared\PaymentsRestApi;
 
-use Spryker\Shared\Kernel\AbstractBundleConfig;
+use Spryker\Shared\Kernel\AbstractSharedConfig;
 
-class PaymentsRestApiConfig extends AbstractBundleConfig
+class PaymentsRestApiConfig extends AbstractSharedConfig
 {
     /**
      * @api
